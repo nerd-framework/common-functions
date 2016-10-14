@@ -3,5 +3,15 @@
   "description": "A lot of functions used in Nerd Framework applications.",
   "license": "MIT",
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload": {
+    "files": [
+      "src/Nerd/Common/Arrays.php"
+    ]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.6",
+    "satooshi/php-coveralls": "^1.0",
+    "squizlabs/php_codesniffer": "^2.7"
+  }
 }
