@@ -41,4 +41,14 @@ class ArraysTest extends TestCase
         $this->assertFalse(any([-10, -5, -1], $test));
         $this->assertFalse(any([], $test));
     }
+
+    public function testAnyKey()
+    {
+        $test = function ($key) {
+            return strlen($key) == 2;
+        };
+        $this->assertTrue(any(["aa" => 15, "abc" => 10], $test, USE_KEY));
+        $this->assertFalse(any(["aaa" => 155, "abc" => 10], $test, USE_KEY));
+        $this->assertFalse(any([], $test, USE_KEY));
+    }
 }
