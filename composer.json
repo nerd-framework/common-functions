@@ -1,0 +1,7 @@
+{
+  "name": "nerd-components/common-functions",
+  "description": "A lot of functions used in Nerd Framework applications.",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
