@@ -15,7 +15,7 @@ const USE_BOTH = 2;
  * @param int $option
  * @return bool
  */
-function some($array, $callable, $option = USE_VALUE)
+function any($array, $callable, $option = USE_VALUE)
 {
     foreach ($array as $key => $value) {
         switch ($option) {
@@ -45,7 +45,7 @@ function some($array, $callable, $option = USE_VALUE)
  * @param int $option
  * @return bool
  */
-function any($array, $callable, $option = USE_VALUE)
+function all($array, $callable, $option = USE_VALUE)
 {
     foreach ($array as $key => $value) {
         switch ($option) {
