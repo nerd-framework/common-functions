@@ -2,6 +2,7 @@
 
 namespace tests;
 
+use function Nerd\Common\Arrays\arrayOf;
 use PHPUnit\Framework\TestCase;
 
 use function Nerd\Common\Arrays\all;
@@ -72,5 +73,12 @@ class ArraysTest extends TestCase
         $this->assertTrue(any(["ab" => 15, "cc" => 20], $test, TEST_BOTH));
         $this->assertFalse(any([], $test, TEST_BOTH));
         $this->assertFalse(any(["a" => 15, "ab" => -15], $test, TEST_BOTH));
+    }
+
+    public function testArrayOf()
+    {
+        $this->assertEquals([1, 2, 3], arrayOf(1, 2, 3));
+        $this->assertEquals([1], arrayOf(1));
+        $this->assertEquals([], arrayOf());
     }
 }

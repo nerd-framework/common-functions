@@ -65,3 +65,14 @@ function all($array, $callable, $option = TEST_VALUE)
     }
     return true;
 }
+
+/**
+ * Create array from variable list of arguments.
+ *
+ * @param array ...$items
+ * @return array
+ */
+function arrayOf(...$items)
+{
+    return $items;
+}
