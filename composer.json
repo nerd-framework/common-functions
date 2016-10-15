@@ -6,7 +6,8 @@
   "prefer-stable": true,
   "autoload": {
     "files": [
-      "src/Nerd/Common/Arrays.php"
+      "src/Nerd/Common/Arrays.php",
+      "src/Nerd/Common/Classes.php"
     ]
   },
   "require-dev": {
