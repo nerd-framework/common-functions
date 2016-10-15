@@ -2,30 +2,30 @@
 
 namespace Nerd\Common\Arrays;
 
-const USE_VALUE = 0;
-const USE_KEY = 1;
-const USE_BOTH = 2;
+const TEST_VALUE = 0;
+const TEST_KEY   = 1;
+const TEST_BOTH  = 2;
 
 /**
- * Test items in array using $callable and return true
- * if at least one of tests successful.
+ * Tests whether some element in the array passes the test
+ * implemented by the provided function.
  *
  * @param $array
  * @param $callable
  * @param int $option
  * @return bool
  */
-function any($array, $callable, $option = USE_VALUE)
+function any($array, $callable, $option = TEST_VALUE)
 {
     foreach ($array as $key => $value) {
         switch ($option) {
-            case USE_KEY:
+            case TEST_KEY:
                 $test = $callable($key);
                 break;
-            case USE_BOTH:
+            case TEST_BOTH:
                 $test = $callable($value, $key);
                 break;
-            case USE_VALUE:
+            case TEST_VALUE:
             default:
                 $test = $callable($value);
         }
@@ -37,25 +37,25 @@ function any($array, $callable, $option = USE_VALUE)
 }
 
 /**
- * Test items in array using $callable and return true
- * if all tests successful.
+ * Tests whether all elements in the array pass the test
+ * implemented by the provided function.
  *
  * @param $array
  * @param $callable
  * @param int $option
  * @return bool
  */
-function all($array, $callable, $option = USE_VALUE)
+function all($array, $callable, $option = TEST_VALUE)
 {
     foreach ($array as $key => $value) {
         switch ($option) {
-            case USE_KEY:
+            case TEST_KEY:
                 $test = $callable($key);
                 break;
-            case USE_BOTH:
+            case TEST_BOTH:
                 $test = $callable($value, $key);
                 break;
-            case USE_VALUE:
+            case TEST_VALUE:
             default:
                 $test = $callable($value);
         }
