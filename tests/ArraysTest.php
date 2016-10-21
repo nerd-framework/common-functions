@@ -3,6 +3,7 @@
 namespace tests;
 
 use function Nerd\Common\Arrays\arrayOf;
+use function Nerd\Common\Arrays\toHeadTail;
 use PHPUnit\Framework\TestCase;
 
 use function Nerd\Common\Arrays\all;
@@ -80,5 +81,11 @@ class ArraysTest extends TestCase
         $this->assertEquals([1, 2, 3], arrayOf(1, 2, 3));
         $this->assertEquals([1], arrayOf(1));
         $this->assertEquals([], arrayOf());
+    }
+
+    public function testSplitHeadTail()
+    {
+        $this->assertEquals([1, [2, 3]], toHeadTail(arrayOf(1, 2, 3)));
+        $this->assertEquals([null, []], toHeadTail(arrayOf()));
     }
 }
