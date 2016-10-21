@@ -15,3 +15,11 @@ function indent($length, $text)
     }, $text);
     return implode(PHP_EOL, $result);
 }
+
+function toHeadTail($string)
+{
+    if (strlen($string) == 0) {
+        return [null, null];
+    }
+    return [$string[0], substr($string, 1)];
+}
