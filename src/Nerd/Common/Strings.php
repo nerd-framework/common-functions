@@ -15,3 +15,15 @@ function indent($length, $text)
     }, $text);
     return implode(PHP_EOL, $result);
 }
+
+/**
+ * @param string $text
+ * @return array
+ */
+function toArray($text)
+{
+    if (strlen($text) == 0) {
+        return [];
+    }
+    return str_split($text, 1);
+}
