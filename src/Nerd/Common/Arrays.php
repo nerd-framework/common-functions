@@ -90,3 +90,16 @@ function toHeadTail($array)
     }
     return [$array[0], array_slice($array, 1)];
 }
+
+/**
+ * Return new array with added new item.
+ *
+ * @param array $array
+ * @param $item
+ * @return mixed
+ */
+function append(array $array, $item)
+{
+    $array[] = $item;
+    return $item;
+}
