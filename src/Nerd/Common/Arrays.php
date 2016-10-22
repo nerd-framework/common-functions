@@ -76,3 +76,30 @@ function arrayOf(...$items)
 {
     return $items;
 }
+
+/**
+ * Split array to head and tail.
+ *
+ * @param $array
+ * @return array
+ */
+function toHeadTail($array)
+{
+    if (sizeof($array) == 0) {
+        return [null, []];
+    }
+    return [$array[0], array_slice($array, 1)];
+}
+
+/**
+ * Return new array with added new item.
+ *
+ * @param array $array
+ * @param $item
+ * @return mixed
+ */
+function append(array $array, $item)
+{
+    $array[] = $item;
+    return $array;
+}

@@ -8,7 +8,8 @@
     "files": [
       "src/Nerd/Common/Arrays.php",
       "src/Nerd/Common/Classes.php",
-      "src/Nerd/Common/Strings.php"
+      "src/Nerd/Common/Strings.php",
+      "src/Nerd/Common/Functional.php"
     ]
   },
   "require-dev": {
