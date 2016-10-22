@@ -101,5 +101,5 @@ function toHeadTail($array)
 function append(array $array, $item)
 {
     $array[] = $item;
-    return $item;
+    return $array;
 }
