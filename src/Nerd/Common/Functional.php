@@ -3,7 +3,10 @@
 namespace Nerd\Common\Functional;
 
 /**
- * Optimize given function for tail recursion.
+ * Decorates given function with tail recursion optimization.
+ *
+ * I took solution here https://gist.github.com/beberlei/4145442
+ * but reworked it for use without classes.
  *
  * @param callable $fn
  * @return \Closure
