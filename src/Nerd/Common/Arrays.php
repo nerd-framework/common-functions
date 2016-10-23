@@ -103,3 +103,30 @@ function append(array $array, $item)
     $array[] = $item;
     return $array;
 }
+
+/**
+ * Flatten array.
+ *
+ * @param array $array
+ * @return mixed
+ */
+function flatten(array $array)
+{
+    return array_reduce($array, function ($result, $item) {
+        return is_array($item) ? array_merge($result, flatten($item)) : append($result, $item);
+    }, []);
+}
+
+/**
+ * Map multidimensional arrays.
+ *
+ * @param array $array
+ * @param callable $callable
+ * @return mixed
+ */
+function deepMap(array $array, callable $callable)
+{
+    return array_reduce($array, function ($result, $item) use (&$callable) {
+        return append($result, is_array($item) ? deepMap($item, $callable) : $callable($item));
+    }, []);
+}
