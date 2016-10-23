@@ -16,10 +16,14 @@ function indent($length, $text)
     return implode(PHP_EOL, $result);
 }
 
-function toHeadTail($string)
+/**
+ * @param string $text
+ * @return array
+ */
+function toArray($text)
 {
-    if (strlen($string) == 0) {
-        return [null, null];
+    if (strlen($text) == 0) {
+        return [];
     }
-    return [$string[0], substr($string, 1)];
+    return str_split($text, 1);
 }

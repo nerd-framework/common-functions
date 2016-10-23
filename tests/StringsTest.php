@@ -18,4 +18,10 @@ class StringsTest extends TestCase
 
         $this->assertEquals("    This is\n    multiline text\n\n    test.\n", Strings\indent(4, $text));
     }
+
+    public function testToArray()
+    {
+        $this->assertEquals([], Strings\toArray(""));
+        $this->assertEquals(['f', 'o', 'o'], Strings\toArray("foo"));
+    }
 }
