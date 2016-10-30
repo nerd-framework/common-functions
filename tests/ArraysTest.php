@@ -109,4 +109,19 @@ class ArraysTest extends TestCase
         $expected = [2, [4, 6, 8], [10], [[12], 14], 16, [[18]]];
         $this->assertEquals($expected, Arrays\deepMap($source, $func));
     }
+
+    public function testRotate()
+    {
+        $this->assertEquals([], Arrays\rotate());
+        $this->assertEquals([1, 2, 3], Arrays\rotate([1, 2, 3]));
+
+        $result1 = Arrays\rotate(['a', 'b', 'c'], [1, 2, 3]);
+        $this->assertEquals(['a', 1, 'b', 2, 'c', 3], $result1);
+
+        $result2 = Arrays\rotate(['a', 'b'], [1, 2, 3]);
+        $this->assertEquals(['a', 1, 'b', 2, null, 3], $result2);
+
+        $result3 = Arrays\rotate(['a', 'b'], [1, 2], ['foo', 'bar']);
+        $this->assertEquals(['a', 1, 'foo', 'b', 2, 'bar'], $result3);
+    }
 }
