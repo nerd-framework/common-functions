@@ -189,7 +189,7 @@ function toString(array $array)
         return strval($item);
     };
 
-    list ($head, $tail) = toHeadTail($array);
+    list($head, $tail) = toHeadTail($array);
 
     $result = array_reduce($tail, function ($acc, $item) use (&$inner) {
         return $acc . ', ' . $inner($item);
