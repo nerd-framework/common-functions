@@ -124,4 +124,13 @@ class ArraysTest extends TestCase
         $result3 = Arrays\rotate(['a', 'b'], [1, 2], ['foo', 'bar']);
         $this->assertEquals(['a', 1, 'foo', 'b', 2, 'bar'], $result3);
     }
+
+    public function testToString()
+    {
+        $this->assertEquals('[]', Arrays\toString([]));
+        $this->assertEquals('[1, 2, 3]', Arrays\toString([1, 2, 3]));
+        $this->assertEquals('[1, [2], [[3]]]', Arrays\toString([1, [2], [[3]]]));
+        $this->assertEquals('["hello", "foo"]', Arrays\toString(["hello", "foo"]));
+        $this->assertEquals('["name \"hello\""]', Arrays\toString(['name \"hello\"']));
+    }
 }
