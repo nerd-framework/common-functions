@@ -3,6 +3,7 @@
 namespace Nerd\Common\Arrays;
 
 use function Nerd\Common\Functional\tail;
+
 const TEST_VALUE = 0;
 const TEST_KEY   = 1;
 const TEST_BOTH  = 2;
