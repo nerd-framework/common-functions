@@ -165,3 +165,34 @@ function rotate(array ...$arrays)
 
     return $iter(0, $size, []);
 }
+
+/**
+ * Converts array into string.
+ *
+ * @param array $array
+ * @return string
+ */
+function toString(array $array)
+{
+    if (empty($array)) {
+        return '[]';
+    }
+
+    $inner = function ($item) {
+        if (is_array($item)) {
+            return toString($item);
+        }
+        if (is_string($item)) {
+            return '"' . str_replace('"', "\"", $item) . '"';
+        }
+        return strval($item);
+    };
+
+    list ($head, $tail) = toHeadTail($array);
+
+    $result = array_reduce($tail, function ($acc, $item) use (&$inner) {
+        return $acc . ', ' . $inner($item);
+    }, $inner($head));
+
+    return '[' . $result . ']';
+}
