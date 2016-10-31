@@ -130,7 +130,7 @@ class ArraysTest extends TestCase
         $this->assertEquals('[]', Arrays\toString([]));
         $this->assertEquals('[1, 2, 3]', Arrays\toString([1, 2, 3]));
         $this->assertEquals('[1, [2], [[3]]]', Arrays\toString([1, [2], [[3]]]));
-        $this->assertEquals('["hello", "foo"]', Arrays\toString(["hello", "foo"]));
-        $this->assertEquals('["name \"hello\""]', Arrays\toString(['name \"hello\"']));
+        $this->assertEquals('[hello, foo]', Arrays\toString(["hello", "foo"]));
+        $this->assertEquals('[name "hello"]', Arrays\toString(['name "hello"']));
     }
 }

@@ -183,10 +183,7 @@ function toString(array $array)
         if (is_array($item)) {
             return toString($item);
         }
-        if (is_string($item)) {
-            return '"' . str_replace('"', "\"", $item) . '"';
-        }
-        return strval($item);
+        return \Nerd\Common\Strings\toString($item);
     };
 
     list($head, $tail) = toHeadTail($array);
