@@ -4,5 +4,5 @@ namespace tests\fixtures;
 
 class Bar
 {
-
+    //
 }
