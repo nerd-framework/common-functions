@@ -10,7 +10,10 @@
       "src/Nerd/Common/Classes.php",
       "src/Nerd/Common/Strings.php",
       "src/Nerd/Common/Functional.php"
-    ]
+    ],
+    "psr-4": {
+      "tests\\": "tests/"
+    }
   },
   "require-dev": {
     "phpunit/phpunit": "^5.6",

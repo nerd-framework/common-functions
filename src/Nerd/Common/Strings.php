@@ -37,11 +37,14 @@ function toString($value)
     if (is_null($value)) {
         return 'NULL';
     }
-    if (is_array($value)) {
-        return \Nerd\Common\Arrays\toString($value);
+    if (is_bool($value)) {
+        return $value ? 'TRUE' : 'FALSE';
     }
     if (is_scalar($value)) {
         return $value;
+    }
+    if (is_array($value)) {
+        return \Nerd\Common\Arrays\toString($value);
     }
     if (is_object($value) && method_exists($value, '__toString')) {
         return strval($value);
