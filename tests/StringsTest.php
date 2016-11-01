@@ -5,6 +5,7 @@ namespace tests;
 use PHPUnit\Framework\TestCase;
 
 use Nerd\Common\Strings;
+use Nerd\Common\Arrays;
 
 class StringsTest extends TestCase
 {
@@ -23,5 +24,30 @@ class StringsTest extends TestCase
     {
         $this->assertEquals([], Strings\toArray(""));
         $this->assertEquals(['f', 'o', 'o'], Strings\toArray("foo"));
+    }
+
+    /**
+     * @dataProvider  toStringDataProvider
+     * @param $expected
+     * @param $test
+     */
+    public function testToString($expected, $test)
+    {
+        $this->assertEquals($expected, Strings\toString($test));
+    }
+
+    public function toStringDataProvider()
+    {
+        return [
+            ['NULL', null],
+            ['TRUE', true],
+            ['FALSE', false],
+            [Arrays\toString([1, 2, 3]), [1, 2, 3]],
+            ['foo', 'foo'],
+            ['100', 100],
+            ['100.5', 100.5],
+            ['bar', new fixtures\Foo()],
+            ['tests\fixtures\Bar', new fixtures\Bar()]
+        ];
     }
 }
