@@ -2,8 +2,7 @@
 
 namespace Nerd\Common\Functional;
 
-use function Nerd\Common\Arrays\all;
-use function Nerd\Common\Arrays\any;
+use Nerd\Common\Arrays;
 
 /**
  * Decorates given function with tail recursion optimization.
@@ -33,30 +32,23 @@ function tail(callable $fn)
     };
 }
 
-function eq($test)
+/**
+ * Pass $data through $chain of functions and pass to $finish at the end.
+ *
+ * @param mixed $data
+ * @param callable[] $chain
+ * @param callable $finish
+ * @return \Closure
+ */
+function pass($data, array $chain, callable $finish)
 {
-    return function ($actual) use ($test) {
-        return is_callable($test) ? $test($actual) : $actual === $test;
-    };
-}
+    $reversed = array_reverse($chain);
 
-function not(callable $callable)
-{
-    return function ($value) use ($callable) {
-        return !$callable($value);
-    };
-}
+    $result = array_reduce($reversed, function (callable $next, callable $fn) {
+        return function ($data) use ($next, $fn) {
+            return $fn($data, $next);
+        };
+    }, $finish);
 
-function opAnd(callable ...$functions)
-{
-    return function ($value) use ($functions) {
-        return all($functions, eq($value));
-    };
-}
-
-function opOr(callable ...$functions)
-{
-    return function ($value) use ($functions) {
-        return any($functions, eq($value));
-    };
+    return $result($data);
 }
