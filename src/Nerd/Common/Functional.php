@@ -2,6 +2,8 @@
 
 namespace Nerd\Common\Functional;
 
+use Nerd\Common\Arrays;
+
 /**
  * Decorates given function with tail recursion optimization.
  *
@@ -28,4 +30,25 @@ function tail(callable $fn)
         }
         return $result;
     };
+}
+
+/**
+ * Pass $data through $chain of functions and pass to $finish at the end.
+ *
+ * @param mixed $data
+ * @param callable[] $chain
+ * @param callable $finish
+ * @return \Closure
+ */
+function pass($data, array $chain, callable $finish)
+{
+    $reversed = array_reverse($chain);
+
+    $result = array_reduce($reversed, function (callable $next, callable $fn) {
+        return function ($data) use ($next, $fn) {
+            return $fn($data, $next);
+        };
+    }, $finish);
+
+    return $result($data);
 }
